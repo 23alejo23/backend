@@ -6,7 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
-                    Create Roles
+                    Create Rols
                     </h1>
                 </div>
             </div>
@@ -19,19 +19,19 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'roles.store']) !!}
+            {!! Form::open(['route' => 'rols.store']) !!}
 
             <div class="card-body">
 
                 <div class="row">
-                    @include('roles.fields')
+                    @include('rols.fields')
                 </div>
 
             </div>
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('roles.index') }}" class="btn btn-default"> Cancel </a>
+                <a href="{{ route('rols.index') }}" class="btn btn-default"> Cancel </a>
             </div>
 
             {!! Form::close() !!}

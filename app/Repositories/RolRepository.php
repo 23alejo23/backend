@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Models\Roles;
+use App\Models\Rol;
 use App\Repositories\BaseRepository;
 
-class RolesRepository extends BaseRepository
+class RolRepository extends BaseRepository
 {
     protected $fieldSearchable = [
         
@@ -18,6 +18,6 @@ class RolesRepository extends BaseRepository
 
     public function model(): string
     {
-        return Roles::class;
+        return Rol::class;
     }
 }

@@ -33,6 +33,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::resource('roles', App\Http\Controllers\RolesController::class);
+
 Route::resource('qrcodes', App\Http\Controllers\QrcodeController::class);
 Route::resource('transactions', App\Http\Controllers\TransactionController::class);
+Route::resource('photoDetails', App\Http\Controllers\photoDetailController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::resource('rols', App\Http\Controllers\RolController::class);

@@ -1,6 +1,6 @@
 <div class="card-body p-0">
     <div class="table-responsive">
-        <table class="table" id="roles-table">
+        <table class="table" id="photo-details-table">
             <thead>
             <tr>
                 
@@ -8,17 +8,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($roles as $roles)
+            @foreach($photoDetails as $photoDetail)
                 <tr>
                     
                     <td  style="width: 120px">
-                        {!! Form::open(['route' => ['roles.destroy', $roles->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['photoDetails.destroy', $photoDetail->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('roles.show', [$roles->id]) }}"
+                            <a href="{{ route('photoDetails.show', [$photoDetail->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('roles.edit', [$roles->id]) }}"
+                            <a href="{{ route('photoDetails.edit', [$photoDetail->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-edit"></i>
                             </a>
@@ -34,7 +34,7 @@
 
     <div class="card-footer clearfix">
         <div class="float-right">
-            @include('adminlte-templates::common.paginate', ['records' => $roles])
+            @include('adminlte-templates::common.paginate', ['records' => $photoDetails])
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @OA\Schema(
- *      schema="Roles",
+ *      schema="Rol",
  *      required={},
  *      @OA\Property(
  *          property="created_at",
@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *          format="date-time"
  *      )
  * )
- */class Roles extends Model
+ */class Rol extends Model
 {
     public $table = 'roles';
 
@@ -38,7 +38,8 @@ use Illuminate\Database\Eloquent\Model;
     ];
 
     public static array $rules = [
-        
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     
