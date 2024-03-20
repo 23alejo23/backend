@@ -8,17 +8,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($photoDetails as $photoDetail)
+            @foreach($photoDetails as $photoDetails)
                 <tr>
                     
                     <td  style="width: 120px">
-                        {!! Form::open(['route' => ['photoDetails.destroy', $photoDetail->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['photoDetails.destroy', $photoDetails->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('photoDetails.show', [$photoDetail->id]) }}"
+                            <a href="{{ route('photoDetails.show', [$photoDetails->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('photoDetails.edit', [$photoDetail->id]) }}"
+                            <a href="{{ route('photoDetails.edit', [$photoDetails->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-edit"></i>
                             </a>

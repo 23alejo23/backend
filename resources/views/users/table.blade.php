@@ -1,24 +1,36 @@
 <div class="card-body p-0">
     <div class="table-responsive">
-        <table class="table" id="rols-table">
+        <table class="table" id="users-table">
             <thead>
             <tr>
                 <th>Name</th>
+                <th>Role Id</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Email Verified At</th>
+                <th>Password</th>
+                <th>Remember Token</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($rols as $rol)
+            @foreach($users as $user)
                 <tr>
-                    <td>{{ $rol->name }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->role_id }}</td>
+                    <td>{{ $user->phone_number }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->email_verified_at }}</td>
+                    <td>{{ $user->password }}</td>
+                    <td>{{ $user->remember_token }}</td>
                     <td  style="width: 120px">
-                        {!! Form::open(['route' => ['rols.destroy', $rol->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('rols.show', [$rol->id]) }}"
+                            <a href="{{ route('users.show', [$user->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('rols.edit', [$rol->id]) }}"
+                            <a href="{{ route('users.edit', [$user->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-edit"></i>
                             </a>
@@ -34,7 +46,7 @@
 
     <div class="card-footer clearfix">
         <div class="float-right">
-            @include('adminlte-templates::common.paginate', ['records' => $rols])
+            @include('adminlte-templates::common.paginate', ['records' => $users])
         </div>
     </div>
 </div>

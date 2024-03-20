@@ -1,12 +1,12 @@
 <!-- Created At Field -->
 <div class="col-sm-12">
     {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $photoDetail->created_at }}</p>
+    <p>{{ $photoDetails->created_at }}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="col-sm-12">
     {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $photoDetail->updated_at }}</p>
+    <p>{{ $photoDetails->updated_at }}</p>
 </div>
 

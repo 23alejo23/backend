@@ -2,44 +2,99 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Model implements Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
+    public $table = 'users';
+
+    public $fillable = [
         'name',
+        'role_id',
+        'phone_number',
         'email',
+        'email_verified_at',
         'password',
+        'remember_token'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
+        'name' => 'string',
+        'phone_number' => 'string',
+        'email' => 'string',
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'password' => 'string',
+        'remember_token' => 'string'
     ];
+
+    public static array $rules = [
+        'name' => 'required|string|max:255',
+        'role_id' => 'required',
+        'phone_number' => 'nullable|string|max:255',
+        'email' => 'required|string|max:255',
+        'email_verified_at' => 'nullable',
+        'password' => 'required|string|max:255',
+        'deleted_at' => 'nullable',
+        'remember_token' => 'nullable|string|max:100',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
+    ];
+
+    public function getAuthIdentifierName()
+    {
+        return 'id';
+    }
+
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'remember_token';
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        if (Hash::needsRehash($value))
+            $password = Hash::make($value);
+
+        $this->attributes['password'] = $password;
+    }
+
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Role::class, 'role_id');
+    }
+
+    public function photos(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\Photo::class, 'user_id');
+    }
 }
+
+?>

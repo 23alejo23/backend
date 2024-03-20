@@ -6,12 +6,12 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>
-Photo Details Details
+User Details
                     </h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right"
-                       href="{{ route('photoDetails.index') }}">
+                       href="{{ route('users.index') }}">
                                                     Back
                                             </a>
                 </div>
@@ -23,7 +23,7 @@ Photo Details Details
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    @include('photo_details.show_fields')
+                    @include('users.show_fields')
                 </div>
             </div>
         </div>
